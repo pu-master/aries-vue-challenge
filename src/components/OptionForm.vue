@@ -2,19 +2,16 @@
   <div class="options-wrapper">
     <div class="options-field-row">
       <div class="options-field">
-        <label :for="`type_${optionData.key}`">Type</label>
-        <select :id="`type_${optionData.key}`" v-model="optionData.type">
+        <label :for="`type_${option.key}`">Type</label>
+        <select :id="`type_${option.key}`" v-model="option.type">
           <option disabled value="">Please select type</option>
           <option value="Call">Call</option>
           <option value="Put">Put</option>
         </select>
       </div>
       <div class="options-field">
-        <label :for="`long_short_${optionData.key}`">Long/Short</label>
-        <select
-          :id="`long_short_${optionData.key}`"
-          v-model="optionData.long_short"
-        >
+        <label :for="`long_short_${option.key}`">Long/Short</label>
+        <select :id="`long_short_${option.key}`" v-model="option.long_short">
           <option disabled value="">Please select position</option>
           <option value="long">Long</option>
           <option value="short">Short</option>
@@ -23,28 +20,28 @@
     </div>
     <div class="options-field-row">
       <div class="options-field">
-        <label :for="`strike_price_${optionData.key}`">Strike Price</label>
+        <label :for="`strike_price_${option.key}`">Strike Price</label>
         <input
-          :id="`strike_price_${optionData.key}`"
-          v-model="optionData.strike_price"
+          :id="`strike_price_${option.key}`"
+          v-model="option.strike_price"
           type="number"
           min="0"
         />
       </div>
       <div class="options-field">
-        <label :for="`bid_${optionData.key}`">Bid Price</label>
+        <label :for="`bid_${option.key}`">Bid Price</label>
         <input
-          :id="`bid_${optionData.key}`"
-          v-model="optionData.bid"
+          :id="`bid_${option.key}`"
+          v-model="option.bid"
           type="number"
           min="0"
         />
       </div>
       <div class="options-field">
-        <label :for="`asl_${optionData.key}`">Ask Price</label>
+        <label :for="`asl_${option.key}`">Ask Price</label>
         <input
-          :id="`asl_${optionData.key}`"
-          v-model="optionData.ask"
+          :id="`asl_${option.key}`"
+          v-model="option.ask"
           type="number"
           min="0"
         />
@@ -54,11 +51,7 @@
       type="button"
       class="btn-remove"
       title="Remove Option"
-      @click="
-        () => {
-          $emit('remove', optionData.key);
-        }
-      "
+      @click="onRemove"
     >
       &times;
     </button>
@@ -80,13 +73,18 @@ export default Vue.extend({
   },
   data() {
     return {
-      optionData: {
+      option: {
         ...this.value,
       },
     };
   },
+  methods: {
+    onRemove() {
+      this.$emit("remove", this.option.key);
+    },
+  },
   watch: {
-    optionData: {
+    option: {
       handler(newValue) {
         this.$emit("input", newValue);
       },
