@@ -11,26 +11,29 @@
         />
       </template>
       <button
+        v-if="options.length < 4"
         type="button"
         class="btn-add"
-        v-if="options.length < 4"
         @click="addOption"
       >
         Add New Option
       </button>
     </div>
+    <RiskRewardGraph :options="options" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import OptionForm from "./OptionForm.vue";
+import RiskRewardGraph from "./RiskRewardGraph.vue";
 import { OptionType } from "@/types";
 
 export default Vue.extend({
   name: "CodingChallenge",
   components: {
     OptionForm,
+    RiskRewardGraph,
   },
   props: {
     optionsData: Array as PropType<OptionType[]>,

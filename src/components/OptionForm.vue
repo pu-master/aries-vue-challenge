@@ -25,28 +25,28 @@
       <div class="options-field">
         <label :for="`strike_price_${optionData.key}`">Strike Price</label>
         <input
-          type="number"
           :id="`strike_price_${optionData.key}`"
-          min="0"
           v-model="optionData.strike_price"
+          type="number"
+          min="0"
         />
       </div>
       <div class="options-field">
         <label :for="`bid_${optionData.key}`">Bid Price</label>
         <input
-          type="number"
           :id="`bid_${optionData.key}`"
-          min="0"
           v-model="optionData.bid"
+          type="number"
+          min="0"
         />
       </div>
       <div class="options-field">
         <label :for="`asl_${optionData.key}`">Ask Price</label>
         <input
-          type="number"
           :id="`asl_${optionData.key}`"
-          min="0"
           v-model="optionData.ask"
+          type="number"
+          min="0"
         />
       </div>
     </div>
