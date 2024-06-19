@@ -4,15 +4,21 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import CodingChallenge from "./components/CodingChallenge.vue";
+import { OptionType } from "@/types";
 
-export default {
+interface DataType {
+  sampleData: OptionType[];
+}
+
+export default Vue.extend({
   name: "App",
   components: {
     CodingChallenge,
   },
-  data() {
+  data(): DataType {
     return {
       sampleData: [
         {
@@ -50,7 +56,7 @@ export default {
       ],
     };
   },
-};
+});
 </script>
 
 <style>
