@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: 'CodingChallenge',
+  name: "CodingChallenge",
   props: {
-    optionsData: Array
-  }
+    optionsData: Array,
+  },
   // Your code here
-}
+};
 </script>
 
 <style scoped>
